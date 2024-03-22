@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const memberController = require("./controllers/memberController");
 
-
 //memberga dalhdor routerlar
 router.get("/", memberController.home);
 router.post("/signup", memberController.signup);
