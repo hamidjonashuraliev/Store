@@ -6,8 +6,8 @@ memberController.signup = async (req, res) => {
     try {
         console.log("POST: cont/signup");
         const data = req.body,
-        member = new Member(),
-        new_member = await member.signupData(data);
+            member = new Member(),
+            new_member = await member.signupData(data);
 
         res.json({ state: "success", data: new_member });
     } catch (err) {
@@ -20,8 +20,8 @@ memberController.login = async (req, res) => {
     try {
         console.log("POST: cont/login");
         const data = req.body,
-        member = new Member(),
-        result = await member.loginData(data);
+            member = new Member(),
+            result = await member.loginData(data);
 
         res.json({ state: "succeed", data: result });
     } catch (err) {

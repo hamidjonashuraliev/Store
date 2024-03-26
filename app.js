@@ -2,6 +2,7 @@ console.log("Web Serverni Boshlash");
 const express = require("express");
 const app = express();
 const router = require("./router");
+const router_bssr = require("./router_bssr.js");
 
 //1 KIRISH codes
 app.use(express.static("public"));
@@ -15,7 +16,7 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 //4 Routing codes
-// app.use("/resto", router_bssr); //Ananaviy yo'l
+app.use("/resto", router_bssr); //Ananaviy yo'l
 app.use("/", router); //REST API
 
 module.exports = app;
