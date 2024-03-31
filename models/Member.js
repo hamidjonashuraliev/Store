@@ -12,20 +12,22 @@ class Member {
         try {
             const salt = await bcrypt.genSalt();
             input.mb_password = await bcrypt.hash(input.mb_password, salt);
+
             const new_member = new this.memberModel(input);
+
             let result;
             try {
                 result = await new_member.save();
-            } catch (mongo_err) {
-                console.log(mongo_err);
+            } catch (mongo_error) {
+                console.log(mongo_error);
                 throw new Error(Definer.auth_err1);
             }
-
+            console.log(result);
             result.mb_password = "";
 
             return result;
-        } catch (err) {
-            throw err;
+        } catch (error) {
+            throw error;
         }
     }
 
@@ -47,10 +49,12 @@ class Member {
             assert.ok(isMatch, Definer.auth_err4);
 
             return await this.memberModel
-                .findOne({ mb_nick: input.mb_nick })
+                .findOne({
+                    mb_nick: input.mb_nick 
+                })
                 .exec();
-        } catch (err) {
-            throw err;
+        } catch (error) {
+            throw error;
         }
     }
 }

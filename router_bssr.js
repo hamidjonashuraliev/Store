@@ -7,21 +7,17 @@ const storeController = require("./controllers/storeController");
  *******************************/
 
 // member related routers (methods)
-router_bssr.get("/signup", storeController.getSignupMyStore);
-router_bssr.post("/signup", storeController.signupProcess);
+router_bssr
+    .get("/signup", storeController.getSignupMyStore)
+    .post("/signup", storeController.signupProcess);
 
-router_bssr.get("/login", storeController.getLoginMyStore);
-router_bssr.post("/login", storeController.loginProcess);
+router_bssr
+    .get("/login", storeController.getLoginMyStore)
+    .post("/login", storeController.loginProcess);
 
 router_bssr.get("/logout", storeController.logout);
+router_bssr.get("/check-me", storeController.checkSessions);
 
-// other routers (methods)
-router_bssr.get("/menu", (req, res) => {
-    res.send("Welcome to Menu Page");
-});
-
-router_bssr.get("/community", (req, res) => {
-    res.send("Welcome to Community Page");
-});
+router_bssr.get("/products/menu", storeController.getMyStoreData);
 
 module.exports = router_bssr;
